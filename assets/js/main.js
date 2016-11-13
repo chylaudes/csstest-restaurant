@@ -1,1 +1,1 @@
-var app = angular.module("algolia", ['algoliasearch']);
+var app = angular.module("algolia", ['algoliasearch', 'ngSanitize']);

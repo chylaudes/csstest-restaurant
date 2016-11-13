@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+
     <script src="/node_modules/algoliasearch/dist/algoliasearch.angular.min.js"></script>
 
 
@@ -26,7 +28,6 @@
 
   <div class="container" ng-controller="HomeController as home">
     <p>{{home.hello}}</p>
-  </div>
 
   <section class="panel">
    <header class="panel-heading">
@@ -42,11 +43,12 @@
  </section>
 
    <h1>Results</h1>
-   <div class="hit" ng-repeat="hit in home.search.hits">
+   <div class="hit" ng-repeat="hit in search.hits">
      <div class="attribute" ng-repeat="(attribute,v) in hit._highlightResult">
        <span>{{ attribute }}: </span>
        <span ng-bind-html="v.value"></span>
      </div>
    </div>
+  </div>
   </body>
 </html>
