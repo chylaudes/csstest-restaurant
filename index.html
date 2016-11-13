@@ -27,5 +27,26 @@
   <div class="container" ng-controller="HomeController as home">
     <p>{{home.hello}}</p>
   </div>
+
+  <section class="panel">
+   <header class="panel-heading">
+     <div class="search_box">
+       <form action="#" method="get">
+         <input autocomplete="off" class="autocomplete" placeholder="Start typing" type="text" spellcheck="false" id="q" ng-model="search.query" />
+         <div class="searchbutton">
+           <i class="icon-search icon-large"></i>
+         </div>
+       </form>
+     </div>
+   </header>
+ </section>
+
+   <h1>Results</h1>
+   <div class="hit" ng-repeat="hit in home.search.hits">
+     <div class="attribute" ng-repeat="(attribute,v) in hit._highlightResult">
+       <span>{{ attribute }}: </span>
+       <span ng-bind-html="v.value"></span>
+     </div>
+   </div>
   </body>
 </html>

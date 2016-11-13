@@ -1,1 +1,1 @@
-var app = angular.module("algolia", []);
+var app = angular.module("algolia", ['algoliasearch']);
