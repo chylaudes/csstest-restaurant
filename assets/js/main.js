@@ -1,3 +1,1 @@
-$(function () {
-  console.log('Page loaded');
-});
+var app = angular.module("algolia", []);

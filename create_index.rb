@@ -4,8 +4,8 @@ require "json"
 
 
 # #=========SCRIPT to combine  both CSV and JSON ========
-
 def csv_to_hash
+  p "Converting CSV into a Hash..."
   file_path = "resources/dataset/restaurants_info.csv"
   array = []
   csv_hash = {}
@@ -22,14 +22,16 @@ def csv_to_hash
 end
 
 def json_to_hash
+  p "Converting JSON into a ruby Array..."
    file = File.read("resources/dataset/restaurants_list.json")
    data_hash = JSON.parse(file)
 end
 
-def combine_both(csv_array, json_array)
+def combine_both(csv_hash, json_array)
+  p "Combining CSV hash and JSON Array..."
   return json_array.map do |hash|
     id_to_be_found = hash["objectID"]
-    new_hash = hash.merge(csv_array[id_to_be_found])
+    new_hash = hash.merge(csv_hash[id_to_be_found])
   end
 end
 
@@ -41,9 +43,14 @@ def load_data_from_database
   combined_data = combine_both(csv_to_hash, json_to_hash)
 end
 
-index = Algolia::Index.new("coffee_shops")
+index = Algolia::Index.new("restaurants")
+p "Clearing Index....."
 index.clear_index
+p "Finished Clearing Index....."
 # `load_data_from_database` must return an array of Hash representing your objects
+p "Loading data to Algolia's API"
 load_data_from_database.each_slice(1000) do |batch|
   index.add_objects(batch)
 end
+
+p "Process Completed!"
