@@ -48,6 +48,9 @@ settingsTask = index.set_settings({
   "attributesToIndex" => ["name", "food_type", "dining_style", "neighborhood", "postal_code", "area", "city"],
   "customRanking" => ["desc(popularity)"]
 })
+p "Setting Facets"
+index.set_settings({"attributesForFaceting" => ["food_type", "stars_count"]})
+
 p "Clearing Index....."
 index.clear_index
 p "Finished Clearing Index....."
