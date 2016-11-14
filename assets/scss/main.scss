@@ -74,6 +74,14 @@ p, li {
       list-style-type: none;
       padding: 0px 15px;
       margin: 0px;
+		li a {
+			color: black;
+			text-decoration: none;
+		}
+		.highlighted {
+			color: white;
+			background-color: blue;
+		}
     }
   }
   .results-section {

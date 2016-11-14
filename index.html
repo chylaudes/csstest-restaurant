@@ -10,12 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
-
     <script src="/node_modules/algoliasearch/dist/algoliasearch.angular.min.js"></script>
+    <!-- algolia helper -->
+    <script src="https://cdn.jsdelivr.net/algoliasearch.helper/1/algoliasearch.helper.min.js"></script>
 
     <script src="assets/js/main.js"></script>
     <script type="text/javascript" src="assets/js/controllers/HomeController.js"></script>
-
+    <script type="text/javascript" src="assets/js/directives/resultCard.js"></script>
+    <script type="text/javascript" src="assets/js/directives/starRatings.js"></script>
 
   </head>
   <body>
@@ -35,27 +37,22 @@
 
      <div class="side-bar">
       <h1>Cuisine / Food-Type</h1>
-      <ul>
-        <li>Italian</li>
-        <li>American</li>
-        <li>Californian</li>
-        <li>French</li>
-        <li>Seafood</li>
-        <li>Japanese</li>
-        <li>Indian</li>
+      <ul ng-repeat="(food_type, count) in home.foodTypeCounts">
+        <li><a href="#" ng-class="{ 'highlighted' : food_type === foodType }" ng-click="home.filterByFoodType(food_type)">{{food_type}} : {{count}}</a></li>
+      </ul>
+      <ul class="stars">
+        <li><a href="">0 Stars</a></li>
+        <li><a href="">1 Star</a></li>
+        <li><a href="">2 Stars</a></li>
+        <li><a href="">3 Stars</a></li>
+        <li><a href="">4 Stars</a></li>
+        <li><a href="">5 Stars</a></li>
       </ul>
      </div>
      <div class="results-section">
        <h1><b>{{home.numberOfHits}} results found</b> in 0.00{{home.processTime}} seconds</h1>
        <div class="hit" ng-repeat="hit in search.hits">
-         <div class="hit-box clearfix">
-           <img src="{{hit.image_url}}" alt="">
-           <div class="hit-body">
-             <h2 ng-bind-html="hit._highlightResult.name.value"></h2>
-             <h3 ng-bind-html="hit._highlightResult.food_type.value"></h3>
-             <span ng-bind-html="hit._highlightResult.neighborhood.value"></span><span> | {{hit.price_range}}</span>
-           </div>
-         </div>
+          <result-card hit="hit"></result-card>
        </div>
      </div>
    </section>
