@@ -18,12 +18,16 @@ function starRatings(){
 
 function starRatingsController($scope){
   var vm  = this;
+  var Rstars = Math.round($scope.stars)
   $scope.ratings = {
-    current: Math.round($scope.stars),
-    max: 5
+    current: Rstars,
+    empty: 5 - Rstars
   }
-  console.log("Stars");
-  console.log("STARRRS", $scope.stars);
-  console.log("Ratings", vm.ratings);
-
+  $scope.range = function(count){
+    var ratings = [];
+    for (var i = 1; i <= count; i++) {
+      ratings.push(i)
+    }
+    return ratings;
+    }
 }
