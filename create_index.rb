@@ -44,6 +44,10 @@ def load_data_from_database
 end
 
 index = Algolia::Index.new("restaurants")
+settingsTask = index.set_settings({
+  "attributesToIndex" => ["name", "food_type", "dining_style", "neighborhood", "postal_code", "area", "city"],
+  "customRanking" => ["desc(popularity)"]
+})
 p "Clearing Index....."
 index.clear_index
 p "Finished Clearing Index....."
