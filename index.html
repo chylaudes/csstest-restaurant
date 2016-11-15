@@ -11,14 +11,15 @@
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="/node_modules/algoliasearch/dist/algoliasearch.angular.min.js"></script>
+    <script src="/node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js"></script>
+
     <!-- algolia helper -->
-    <script src="https://cdn.jsdelivr.net/algoliasearch.helper/1/algoliasearch.helper.min.js"></script>
 
     <script src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/factories/searchHelperFactory.js"></script>
     <script type="text/javascript" src="assets/js/controllers/HomeController.js"></script>
     <script type="text/javascript" src="assets/js/directives/resultCard.js"></script>
     <script type="text/javascript" src="assets/js/directives/starRatings.js"></script>
-
   </head>
   <body>
 
@@ -27,7 +28,7 @@
      <header class="panel-heading">
        <div class="search_box">
          <form action="#" method="get">
-           <input autocomplete="off" class="autocomplete" placeholder="Search for Restaurants by Name, Cuisine, Location" type="text" spellcheck="false" id="q" ng-model="search.query" />
+           <input autocomplete="off" class="autocomplete" placeholder="Search for Restaurants by Name, Cuisine, Location" type="text" spellcheck="false" ng-model="query" ng-keyup="searchQuery($evt)"/>
            <div class="searchbutton">
              <i class="icon-search icon-large"></i>
            </div>
@@ -37,23 +38,23 @@
 
      <div class="side-bar">
       <h1>Cuisine / Food-Type</h1>
-      <ul class="foodTypeList" ng-repeat="(food_type, count) in home.foodTypeCounts">
-        <li ng-class="{ 'highlighted' : food_type === foodType }"><a href="#" ng-click="home.filterByFoodType(food_type)">{{food_type}} <span>{{count}}</span></a></li>
+      <ul class="foodTypeList" ng-repeat="(food_type, count) in foodTypeCounts">
+        <li ng-class="{ 'highlighted' : facetVal[0].name === food_type && facetVal.length === 1, 'disabled' : facetVal[0].name !== food_type && facetVal.length === 1 }"><a href="#" ng-click="toggleFacet(food_type)">{{food_type}} <span>{{count}}</span></a></li>
       </ul>
       <div class="rating-box">
         <h1>Rating</h1>
         <ul class="stars">
-          <li class="clearfix" ><a href=""><star-ratings stars="0"></star-ratings></a></li>
-          <li class="clearfix"><a href=""><star-ratings stars="1"></star-ratings></a></li>
-          <li class="clearfix"><a href=""><star-ratings stars="2"></star-ratings></a></li>
-          <li class="clearfix"><a href=""><star-ratings stars="3"></star-ratings></a></li>
-          <li class="clearfix"><a href=""><star-ratings stars="4"></star-ratings></a></li>
-          <li class="clearfix"><a href=""><star-ratings stars="5"></star-ratings></a></li>
+          <li class="clearfix" ><a ng-click="toggleStars(0)"><star-ratings stars="0"></star-ratings></a></li>
+          <li class="clearfix"><a ng-click="toggleStars(1)"><star-ratings stars="1"></star-ratings></a></li>
+          <li class="clearfix"><a ng-click="toggleStars(2)"><star-ratings stars="2"></star-ratings></a></li>
+          <li class="clearfix"><a ng-click="toggleStars(3)"><star-ratings stars="3"></star-ratings></a></li>
+          <li class="clearfix"><a ng-click="toggleStars(4)"><star-ratings stars="4"></star-ratings></a></li>
+          <li class="clearfix"><a ng-click="toggleStars(5)"><star-ratings stars="5"></star-ratings></a></li>
         </ul>
       </div>
      </div>
      <div class="results-section">
-       <h1><b>{{home.numberOfHits}} results found</b> in 0.00{{home.processTime}} seconds</h1>
+       <h1><b>{{search.numberOfHits}} results found</b> in 0.00{{search.processTime}} seconds</h1>
        <div class="line"></div>
        <div class="hit" ng-repeat="hit in search.hits">
           <result-card hit="hit"></result-card>

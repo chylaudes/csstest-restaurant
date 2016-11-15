@@ -75,6 +75,11 @@ p, li {
 		.foodTypeList li:hover {
 			background-color: #dbdde0;
 		}
+		.foodTypeList li.disabled a, .foodTypeList li.disabled:hover {
+			pointer-events: none;
+			color: #d6d7d8;
+			background-color: #FFF;
+		}
     ul {
       list-style-type: none;
     	padding: 0px 3px;
