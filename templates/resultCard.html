@@ -2,9 +2,7 @@
   <img src="{{hit.image_url}}" alt="">
   <div class="hit-body">
     <h2 ng-bind-html="hit._highlightResult.name.value"></h2>
-    <h3 ng-bind-html="hit.stars_count"></h3>
-    <star-ratings stars="hit.stars_count"></star-ratings>
-    <span>({{hit.reviews_count}} reviews)</span>
-    <span ng-bind-html="hit._highlightResult.food_type.value"></span><span> | </span><span ng-bind-html="hit._highlightResult.neighborhood.value"></span><span> | {{hit.price_range}}</span>
+    <star-ratings stars="hit.stars_count" reviews="hit.reviews_count"></star-ratings>
+    <h3 ng-bind-html="hit._highlightResult.food_type.value"></h3><span> | </span><span ng-bind-html="hit._highlightResult.neighborhood.value"></span><span> | {{hit.price_range}}</span>
   </div>
 </div>

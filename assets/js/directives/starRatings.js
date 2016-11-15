@@ -10,7 +10,8 @@ function starRatings(){
     controller: starRatingsController,
     controllerAs: 'starRatingsCtrl',
     scope: {
-      stars: '=stars'
+      stars: '=stars',
+      reviewCount: '=reviews'
     }
   };
   return directive;
@@ -30,4 +31,5 @@ function starRatingsController($scope){
     }
     return ratings;
     }
+    console.log("revien", $scope.reviewCount);
 }

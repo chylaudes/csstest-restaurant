@@ -38,8 +38,9 @@
      <div class="side-bar">
       <h1>Cuisine / Food-Type</h1>
       <ul ng-repeat="(food_type, count) in home.foodTypeCounts">
-        <li><a href="#" ng-class="{ 'highlighted' : food_type === foodType }" ng-click="home.filterByFoodType(food_type)">{{food_type}} : {{count}}</a></li>
+        <li ng-class="{ 'highlighted' : food_type === foodType }"><a href="#" ng-click="home.filterByFoodType(food_type)">{{food_type}} <span>{{count}}</span></a></li>
       </ul>
+      <h1>Rating</h1>
       <ul class="stars">
         <li><a href="">0 Stars</a></li>
         <li><a href="">1 Star</a></li>

@@ -16,7 +16,8 @@ body {
 h1 {
   font-size: 15px;
   letter-spacing: 1px;
-  font-weight: 400;
+  font-weight: 500;
+	margin-bottom: 25px;
 }
 h2 {
   font-size: 14px;
@@ -35,7 +36,7 @@ p, li {
   margin-top: 40px;
   background-color: #FFF;
   font-size: 2em;
-  width: 80%;
+  width: 88%;
   box-shadow: 3px 4px 15px 0px rgba(0, 0, 0, 0.4);
   p {
     margin: 5px;
@@ -46,7 +47,7 @@ p, li {
   text-align: left;
   width: 100%;
   header {
-    background-color: #1a5fce;
+    background-color: #1C688E;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     .search_box {
@@ -72,27 +73,45 @@ p, li {
     display: inline-block;
     ul {
       list-style-type: none;
-      padding: 0px 15px;
-      margin: 0px;
-		li a {
-			color: black;
-			text-decoration: none;
-		}
-		.highlighted {
-			color: white;
-			background-color: blue;
-		}
+    	padding: 0px 3px;
+			margin: 0px;
+			li {
+				font-size: 14px;
+    		padding: 4px 9px;
+				border-radius: 7px;
+		    margin: 0px;
+			}
+			li a {
+				color: black;
+				text-decoration: none;
+				span {
+					float: right;
+					font-weight: 100;
+					// color: rgba(0,0,0,0.9)
+				}
+			}
+			.highlighted {
+				background-color: #2897C5;
+			}
+			.highlighted a {
+				color: white;
+			}
     }
+
   }
   .results-section {
     display: inline-block;
-    width: 60%;
+    width: 70%;
     padding: 18px 0px 0px 50px;
+		h1 {
+			font-size: 16px;
+			font-weight: 400;
+		}
     .hit-box {
       margin-bottom: 22px;
       img {
         float: left;
-        width: 90px;
+        width: 80px;
         border: 1px solid grey;
         border-radius: 4px;
       }
@@ -103,14 +122,15 @@ p, li {
           font-size: 17px;
           font-weight: 500;
           letter-spacing: 1px;
-          margin-top: 0px;
+          margin: 0px 0px 9px ;
         }
         h3 {
           font-size: 15px;
-          font-weight: 100;
-          letter-spacing: 1px;
-          margin: 3px 0px;
           line-height: 1px;
+					display: inline-block;
+					font-weight: 400;
+					letter-spacing: 1px;
+					margin: 8px 5px;
         }
         span {
           font-size: 14px;
@@ -118,6 +138,23 @@ p, li {
           letter-spacing: 1px;
           margin-top: 3px;
         }
+				.stars-box {
+					h3 {
+						color: #FFAB66;
+						float: left;
+					}
+					.yellow-star, .empty-star {
+						border: none;
+						width: 15px;
+						margin-right: 3px;
+					}
+					p {
+						font-weight: 100;
+						letter-spacing: 1px;
+						margin: 0px;
+					}
+				}
+
       }
       em {
         background-color: #a2c3f9;

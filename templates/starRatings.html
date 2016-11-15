@@ -1,9 +1,10 @@
-<div class="stars-box">
+<div class="stars-box clearfix">
+  <h3 ng-bind-html="stars"></h3>
   <span ng-repeat="star in range(ratings.current)">
     <img class="yellow-star" src="resources/graphics/stars-plain.png" data-value="{{star}}" alt="">
   </span>
   <span ng-repeat="eStar in range(ratings.empty)">
     <img class="empty-star" src="resources/graphics/star-empty.png" data-value="{{eStar}}" alt="">
   </span>
-
+  <p>({{reviewCount}} reviews)</p>
 </div>
