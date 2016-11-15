@@ -37,21 +37,24 @@
 
      <div class="side-bar">
       <h1>Cuisine / Food-Type</h1>
-      <ul ng-repeat="(food_type, count) in home.foodTypeCounts">
+      <ul class="foodTypeList" ng-repeat="(food_type, count) in home.foodTypeCounts">
         <li ng-class="{ 'highlighted' : food_type === foodType }"><a href="#" ng-click="home.filterByFoodType(food_type)">{{food_type}} <span>{{count}}</span></a></li>
       </ul>
-      <h1>Rating</h1>
-      <ul class="stars">
-        <li><a href="">0 Stars</a></li>
-        <li><a href="">1 Star</a></li>
-        <li><a href="">2 Stars</a></li>
-        <li><a href="">3 Stars</a></li>
-        <li><a href="">4 Stars</a></li>
-        <li><a href="">5 Stars</a></li>
-      </ul>
+      <div class="rating-box">
+        <h1>Rating</h1>
+        <ul class="stars">
+          <li class="clearfix" ><a href=""><star-ratings stars="0"></star-ratings></a></li>
+          <li class="clearfix"><a href=""><star-ratings stars="1"></star-ratings></a></li>
+          <li class="clearfix"><a href=""><star-ratings stars="2"></star-ratings></a></li>
+          <li class="clearfix"><a href=""><star-ratings stars="3"></star-ratings></a></li>
+          <li class="clearfix"><a href=""><star-ratings stars="4"></star-ratings></a></li>
+          <li class="clearfix"><a href=""><star-ratings stars="5"></star-ratings></a></li>
+        </ul>
+      </div>
      </div>
      <div class="results-section">
        <h1><b>{{home.numberOfHits}} results found</b> in 0.00{{home.processTime}} seconds</h1>
+       <div class="line"></div>
        <div class="hit" ng-repeat="hit in search.hits">
           <result-card hit="hit"></result-card>
        </div>
