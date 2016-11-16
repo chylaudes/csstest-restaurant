@@ -1,5 +1,17 @@
 #  CSE Test - Place2Eat
 
+###Stack
+Angular
+Ruby Script
+Algolia Search Client/ Algolia Search Helper
+
+run `ruby create_index` to merge the csv and data JSON files together and send it to Algolia's API with the approprieate API key and ID.
+
+You might have to put in your own, because I sourced mines in my bash_profile.  But the Front-end API Keys are exposed.
+
+Thanks for the opportunity!  I had a lot of fun with this one!
+
+<hr>
 Our sales team has recently been contacted by a large restaurant reservation website, for who it as identified as strategic to build a demo. As a Customer Solutions Engineer, you're asked to build a small prototype that, using the dataset and UI they have provided us, highlights the benefits of a great search experience.
 
 
