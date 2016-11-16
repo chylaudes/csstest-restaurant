@@ -9,7 +9,7 @@ function HomeController( $scope,   algolia,   _ ) {
   var helper = algoliasearchHelper(client, index, {
   facets: ['food_type'],
   disjunctiveFacets: ['stars_count'],
-  hitsPerPage: 20
+  hitsPerPage: 3
   });
   //scope search object for the DOM
   $scope.search = {
@@ -53,7 +53,7 @@ function HomeController( $scope,   algolia,   _ ) {
         });
       }
       $scope.$apply(function() {
-        $scope.search.hits = content.hits;
+        $scope.search.hits = $scope.search.hits.concat(content.hits);
         $scope.search.numberOfHits = content.nbHits;
         $scope.search.processTime = content.processingTimeMS;
     });
@@ -66,7 +66,12 @@ $scope.toggleFacet = function (name) {
     helper.toggleRefinement('food_type', name).search();
     helper.on('result', function (content) {
       console.log("TOOGGLEEE", content);
-      $scope.$apply($scope.facetVal = content.getFacetValues('food_type'));
+      $scope.$apply(function() {
+        $scope.lastPage = content.nbPages;
+        $scope.currentPage = content.page;
+        $scope.search.hits = content.hits;
+        $scope.facetVal = content.getFacetValues('food_type');
+      });
     });
 };
 
@@ -75,18 +80,19 @@ $scope.toggleStars = function (star) {
   console.log(star);
   helper.toggleRefinement('stars_count', star);
   helper.search();
-
   helper.on('result', function (content) {
     console.log("STARRRR", content);
 
-    $scope.$apply( function(){
+    $scope.$apply(function () {
       $scope.refinements = content.getRefinements('stars_count');
       $scope.search.hits = content.hits;
+      $scope.lastPage = content.nbPages;
+      $scope.currentPage = content.page;
     });
   });
 };
 
-$scope.starsRatings = ["1.0", "2.0", "3.0", "4.0", "4.9"]
+$scope.starsRatings = ["1.0", "2.0", "3.0", "4.0", "4.9"];
 
 vm.checkRefinements = function(star){
   if (_.find($scope.refinements, { name: star} )) {
@@ -100,9 +106,17 @@ vm.checkRefinements = function(star){
 
 //clear search function too.
 vm.clearSearch = function() {
-  console.log("CLEAR");
   helper.clearRefinements();
   helper.search();
+};
+
+ $scope.currentPage = 0;
+ $scope.lastPage = 0;
+//show more on the list
+vm.toggleList = function(){
+  console.log("CurrentPage",  $scope.currentPage);
+  console.log("Lastpage", $scope.lastPage);
+  helper.nextPage().search();
 };
 
 

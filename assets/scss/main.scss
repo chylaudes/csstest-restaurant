@@ -11,7 +11,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 13px;
   font-weight: 400;
-  background: url('../images/wall.png') repeat center center fixed;
+  background: url('../../resources/graphics/background_@2X.png') repeat center center fixed;
 }
 h1 {
   font-size: 16px;
@@ -27,6 +27,27 @@ p, li {
   font-size: 13px;
   font-weight: 400;
   margin-bottom: 8px;
+}
+button {
+	width: 150px;
+	height: 22px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 3px;
+	background-color:#FFF;
+	font-weight: 100;
+	font-size: 13px;
+	border: 0.5px solid rgb(207, 207, 209);
+	margin-top: 30px;
+}
+button:hover {
+	background-color: #dbdde0;
+}
+button.disabled {
+	pointer-events: none;
+	background-color: rgb(207, 207, 209);
+	color: white;
 }
 
 .container {
@@ -46,6 +67,7 @@ p, li {
 .panel {
   text-align: left;
   width: 100%;
+	padding: 0px 0px 35px 0px;
   header {
     background-color: #1C688E;
     border-top-left-radius: 4px;
@@ -109,22 +131,6 @@ p, li {
 				color: white;
 			}
     }
-		button {
-			width: 150px;
-			height: 22px;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			border-radius: 3px;
-			background-color:#FFF;
-			font-weight: 100;
-			font-size: 13px;
-			border: 0.5px solid rgb(207, 207, 209);
-			margin-top: 40px;
-		}
-		button:hover {
-			background-color: #dbdde0;
-		}
 		.rating-box {
 			margin-top: 37px;
 			h1 {
@@ -210,6 +216,12 @@ p, li {
         font-style: normal;
       }
     }
+		button {
+			width: 260px;
+			height: 38px;
+			font-size: 17px;
+			margin-top: 75px;
+		}
   }
 
 }// end of .panel
