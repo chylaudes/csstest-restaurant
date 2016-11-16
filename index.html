@@ -46,13 +46,8 @@
       </ul>
       <div class="rating-box">
         <h1>Rating</h1>
-        <ul class="stars">
-          <li class="clearfix" ng-class="{ 'highlighted' : home.checkRefinements('1.0') }" ><a ng-click="toggleStars('1.0')"><star-ratings stars="1.0"></star-ratings></a></li>
-          <li class="clearfix" ng-class="{ 'highlighted' : home.checkRefinements('2.0') }" ><a ng-click="toggleStars('2.0')"><star-ratings stars="2.0"></star-ratings></a></li>
-          <li class="clearfix" ng-class="{ 'highlighted' : home.checkRefinements('3.0') }" ><a ng-click="toggleStars('3.0')"><star-ratings stars="3.3"></star-ratings></a></li>
-          <li class="clearfix" ng-class="{ 'highlighted' : home.checkRefinements('4.0') }" ><a ng-click="toggleStars('4.0')"><star-ratings stars="4.0"></star-ratings></a></li>
-          <li class="clearfix" ng-class="{ 'highlighted' : home.checkRefinements('4.9') }" ><a ng-click="toggleStars('4.9')"><star-ratings stars="5.0"></star-ratings></a></li>
-        </ul>
+        <ul class="stars" ng-repeat="star in starsRatings">
+          <li class="clearfix"> <a ng-click="toggleStars(star)"> <input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"> <star-ratings stars="star"></star-ratings></a></li>
       </div>
      </div>
      <div class="results-section">

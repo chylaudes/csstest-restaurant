@@ -86,10 +86,18 @@ $scope.toggleStars = function (star) {
   });
 
 }
+// $scope.starsRatings = {
+//   "1.0" : false,
+//   "2.0" : false,
+//   "3.0" : false,
+//   "4.0" : false,
+//   "4.9" : false
+// };
+$scope.starsRatings = ["1.0", "2.0", "3.0", "4.0", "4.9"]
 
 vm.checkRefinements = function(star){
   if (_.find($scope.refinements, { name: star} )) {
-    return true;
+    return _.find($scope.refinements, { name: star} );
   }
   else {
     return false;
