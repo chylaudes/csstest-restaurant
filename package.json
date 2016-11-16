@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "gulp dev",
-    "server": "gulp server"
+    "server": "gulp server",
+    "start": "node index.js"
   },
   "author": "Algolia",
   "license": "UNLICENSED",
@@ -18,6 +19,10 @@
   },
   "dependencies": {
     "algoliasearch": "^3.19.1",
-    "angular-sanitize": "^1.5.8"
+    "algoliasearch-helper": "^2.14.0",
+    "angular-sanitize": "^1.5.8",
+    "express": "^4.14.0",
+    "glob": "^7.1.1",
+    "ng-lodash": "^0.2.3"
   }
 }
