@@ -26,43 +26,40 @@
   </head>
   <body>
 
-  <div class="container" ng-controller="HomeController as home">
-    <section class="panel clearfix">
-     <header class="panel-heading">
-       <div class="search_box">
-         <form action="#" method="get">
-           <input autocomplete="off" class="autocomplete" placeholder="Search for Restaurants by Name, Cuisine, Location" type="text" spellcheck="false" ng-model="query" ng-keyup="searchQuery($evt)"/>
-           <div class="searchbutton">
-             <i class="icon-search icon-large"></i>
-           </div>
-         </form>
-       </div>
-     </header>
+    <div class="container" ng-controller="HomeController as home">
+      <section class="panel clearfix">
+       <header class="panel-heading">
+         <div class="search_box">
+           <form action="#" method="get">
+             <input autocomplete="off" class="autocomplete" placeholder="Search for Restaurants by Name, Cuisine, Location" type="text" spellcheck="false" ng-model="query" ng-keyup="searchQuery($evt)"/>
+           </form>
+         </div>
+       </header>
 
-     <div class="side-bar">
-      <h1>Cuisine / Food-Type</h1>
-      <ul class="foodTypeList" ng-repeat="(food_type, count) in foodTypeCounts">
-        <li ng-class="{ 'highlighted' : facetVal[0].name === food_type && facetVal.length === 1, 'disabled' : facetVal[0].name !== food_type && facetVal.length === 1 }"><a href="#" ng-click="toggleFacet(food_type)">{{food_type}} <span>{{count}}</span></a></li>
-      </ul>
-      <div class="rating-box">
-        <h1>Rating</h1>
-        <ul class="stars" ng-repeat="star in starsRatings">
-          <li class="clearfix"> <a ng-click="toggleStars(star)"> <input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"> <star-ratings stars="star"></star-ratings></a></li>
+       <div class="side-bar">
+        <h1>Cuisine / Food-Type</h1>
+        <ul class="foodTypeList" ng-repeat="(food_type, count) in foodTypeCounts">
+          <li ng-class="{ 'highlighted' : facetVal[0].name === food_type && facetVal.length === 1, 'disabled' : facetVal[0].name !== food_type && facetVal.length === 1 }"><a href="#" ng-click="toggleFacet(food_type)">{{food_type}} <span>{{count}}</span></a></li>
         </ul>
-      </div>
-      <button class="clear-button" ng-click="home.clearSearch()">Clear Searches</button>
-     </div>
-     <div class="results-section">
-       <h1><b>{{search.numberOfHits}} results found</b> in 0.00{{search.processTime}} seconds</h1>
-       <div class="line"></div>
-       <div class="hit" ng-repeat="hit in search.hits">
-          <result-card hit="hit"></result-card>
+        <div class="rating-box">
+          <h1>Rating</h1>
+          <ul class="stars" ng-repeat="star in starsRatings">
+            <li class="clearfix"> <a ng-click="toggleStars(star)"><input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"><star-ratings stars="star"></star-ratings></a></li>
+          </ul>
+        </div>
+        <button class="clear-button" ng-click="home.clearSearch()">Clear Searches</button>
        </div>
-       <button ng-click="home.toggleList()" ng-class="{'disabled' : currentPage + 1 === lastPage || search.hits.length === 0}">Show More</button>
-     </div>
-   </section>
 
+       <div class="results-section">
+         <h1><b>{{search.numberOfHits}} results found</b> in 0.00{{search.processTime}} seconds</h1>
+         <div class="line"></div>
+         <div class="hit" ng-repeat="hit in search.hits">
+            <result-card hit="hit"></result-card>
+         </div>
+         <button ng-click="home.toggleList()" ng-class="{'disabled' : currentPage + 1 === lastPage || search.hits.length === 0}">Show More</button>
+       </div>
+     </section>
+    </div> <!-- end of container -->
 
-  </div> <!-- end of container -->
   </body>
 </html>

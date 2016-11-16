@@ -49,8 +49,8 @@ button.disabled {
 	background-color: rgb(207, 207, 209);
 	color: white;
 }
-
 input:focus::-webkit-input-placeholder { color: transparent; }
+
 .container {
   display: block;
   margin-left: auto;
@@ -88,6 +88,7 @@ input:focus::-webkit-input-placeholder { color: transparent; }
       }
     }
   }
+
   .side-bar {
     float: left;
     width: 20%;
@@ -141,13 +142,11 @@ input:focus::-webkit-input-placeholder { color: transparent; }
 				float: right;
 			}
 		}
-
 		.stars {
 			li a span {
 					float: left;
 			}
 		}
-
   } // end of side-bar
   .results-section {
     display: inline-block;
@@ -223,6 +222,5 @@ input:focus::-webkit-input-placeholder { color: transparent; }
 			font-size: 17px;
 			margin-top: 75px;
 		}
-  }
-
+  } // end of results-section
 }// end of .panel

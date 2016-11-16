@@ -11,13 +11,18 @@ function HomeController( $scope,   algolia,   _ ) {
   disjunctiveFacets: ['stars_count'],
   hitsPerPage: 3
   });
+  //recording the pages
+ $scope.currentPage = 0;
+ $scope.lastPage = 0;
+
   //scope search object for the DOM
   $scope.search = {
                     hits: [],
                     numberOfHits: 0,
                     processTime : 0,
                   };
-  // Special FoodTypes
+
+  // Recording the hits of the FoodTypes
   $scope.foodTypeCounts = {
     "Italian" : 0,
     "American" : 0,
@@ -27,6 +32,9 @@ function HomeController( $scope,   algolia,   _ ) {
     "Japanese" : 0,
     "Indian" : 0
   };
+  //Recording all the star ratings
+  $scope.starsRatings = ["1.0", "2.0", "3.0", "4.0", "4.9"];
+
   $scope.facetVal = [];
   $scope.query = '';
   //event query search on result
@@ -34,12 +42,10 @@ function HomeController( $scope,   algolia,   _ ) {
     helper.setQuery($scope.query).search();
   };
 
-
   //first search on the dom load
   var initialSearch = function () {
     helper.search();
     helper.on('result', function(content) {
-      console.log("INIT", content);
       if (content.facets[0]) {
         var foodFacet = content.facets[0].data;
         $scope.$apply(function(){
@@ -56,68 +62,59 @@ function HomeController( $scope,   algolia,   _ ) {
         $scope.search.hits = $scope.search.hits.concat(content.hits);
         $scope.search.numberOfHits = content.nbHits;
         $scope.search.processTime = content.processingTimeMS;
-    });
-  });
-};
-
-initialSearch();
-
-$scope.toggleFacet = function (name) {
-    helper.toggleRefinement('food_type', name).search();
-    helper.on('result', function (content) {
-      console.log("TOOGGLEEE", content);
-      $scope.$apply(function() {
-        $scope.lastPage = content.nbPages;
-        $scope.currentPage = content.page;
-        $scope.search.hits = content.hits;
-        $scope.facetVal = content.getFacetValues('food_type');
       });
     });
-};
+  };
 
-$scope.refinements = [];
-$scope.toggleStars = function (star) {
-  console.log(star);
-  helper.toggleRefinement('stars_count', star);
-  helper.search();
-  helper.on('result', function (content) {
-    console.log("STARRRR", content);
+  initialSearch();
 
-    $scope.$apply(function () {
-      $scope.refinements = content.getRefinements('stars_count');
-      $scope.search.hits = content.hits;
-      $scope.lastPage = content.nbPages;
-      $scope.currentPage = content.page;
+  //toggling between food_type facets
+  $scope.toggleFacet = function (name) {
+      helper.toggleRefinement('food_type', name).search();
+      helper.on('result', function (content) {
+        console.log("TOOGGLEEE", content);
+        $scope.$apply(function() {
+          $scope.lastPage = content.nbPages;
+          $scope.currentPage = content.page;
+          $scope.search.hits = content.hits;
+          $scope.facetVal = content.getFacetValues('food_type');
+        });
+      });
+  };
+
+
+  $scope.toggleStars = function (star) {
+    helper.toggleRefinement('stars_count', star);
+    helper.search();
+    helper.on('result', function (content) {
+      $scope.$apply(function () {
+        $scope.refinements = content.getRefinements('stars_count');
+        $scope.search.hits = content.hits;
+        $scope.lastPage = content.nbPages;
+        $scope.currentPage = content.page;
+      });
     });
-  });
-};
+  };
 
-$scope.starsRatings = ["1.0", "2.0", "3.0", "4.0", "4.9"];
+  $scope.refinements = [];
+  vm.checkRefinements = function(star){
+    if (_.find($scope.refinements, { name: star} )) {
+      return _.find($scope.refinements, { name: star} );
+    }
+    else {
+      return false;
+    }
+  };
 
-vm.checkRefinements = function(star){
-  if (_.find($scope.refinements, { name: star} )) {
-    return _.find($scope.refinements, { name: star} );
-  }
-  else {
-    return false;
-  }
-};
+  //clear search function too.
+  vm.clearSearch = function() {
+    helper.clearRefinements();
+    helper.search();
+  };
 
-
-//clear search function too.
-vm.clearSearch = function() {
-  helper.clearRefinements();
-  helper.search();
-};
-
- $scope.currentPage = 0;
- $scope.lastPage = 0;
-//show more on the list
-vm.toggleList = function(){
-  console.log("CurrentPage",  $scope.currentPage);
-  console.log("Lastpage", $scope.lastPage);
-  helper.nextPage().search();
-};
-
+  //show more on the list
+  vm.toggleList = function(){
+    helper.nextPage().search();
+  };
 
 }// end of HOME CONTROLLER
