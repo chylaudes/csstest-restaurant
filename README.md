@@ -1,9 +1,9 @@
 #  CSE Test - Place2Eat
 
 ###Stack
-Angular
-Ruby Script
-Algolia Search Client/ Algolia Search Helper
+ - Angular
+ - Ruby Script
+ - Algolia Search Client/ Algolia Search Helper
 
 run `ruby create_index` to merge the csv and data JSON files together and send it to Algolia's API with the approprieate API key and ID.
 
