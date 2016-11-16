@@ -57,8 +57,8 @@ function HomeController( $scope,   algolia,   _ ) {
         $scope.search.numberOfHits = content.nbHits;
         $scope.search.processTime = content.processingTimeMS;
     });
-  })
-}
+  });
+};
 
 initialSearch();
 
@@ -84,15 +84,8 @@ $scope.toggleStars = function (star) {
       $scope.search.hits = content.hits;
     });
   });
+};
 
-}
-// $scope.starsRatings = {
-//   "1.0" : false,
-//   "2.0" : false,
-//   "3.0" : false,
-//   "4.0" : false,
-//   "4.9" : false
-// };
 $scope.starsRatings = ["1.0", "2.0", "3.0", "4.0", "4.9"]
 
 vm.checkRefinements = function(star){
@@ -102,7 +95,7 @@ vm.checkRefinements = function(star){
   else {
     return false;
   }
-}
+};
 
 
 //clear search function too.
