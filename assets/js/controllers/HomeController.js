@@ -72,7 +72,6 @@ function HomeController( $scope,   algolia,   _ ) {
   $scope.toggleFacet = function (name) {
       helper.toggleRefinement('food_type', name).search();
       helper.on('result', function (content) {
-        console.log("TOOGGLEEE", content);
         $scope.$apply(function() {
           $scope.lastPage = content.nbPages;
           $scope.currentPage = content.page;
