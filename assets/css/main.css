@@ -1,0 +1,232 @@
+/* line 1, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+/* line 10, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  background: url("../../resources/graphics/background_@2X.png") repeat center center fixed; }
+
+/* line 16, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+h1 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-bottom: 25px; }
+
+/* line 22, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+h2 {
+  font-size: 14px;
+  letter-spacing: 1px; }
+
+/* line 26, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+p, li {
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 8px; }
+
+/* line 31, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+button {
+  width: 150px;
+  height: 22px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 3px;
+  background-color: #FFF;
+  font-weight: 100;
+  font-size: 13px;
+  border: 0.5px solid #cfcfd1;
+  margin-top: 30px; }
+
+/* line 44, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+button:hover {
+  background-color: #dbdde0; }
+
+/* line 47, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+button.disabled {
+  pointer-events: none;
+  background-color: #cfcfd1;
+  color: white; }
+
+/* line 52, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+input:focus::-webkit-input-placeholder {
+  color: transparent; }
+
+/* line 54, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+.container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  background-color: #FFF;
+  font-size: 2em;
+  width: 88%;
+  box-shadow: 3px 4px 15px 0px rgba(0, 0, 0, 0.4); }
+  /* line 63, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+  .container p {
+    margin: 5px; }
+
+/* line 68, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+.panel {
+  text-align: left;
+  width: 100%;
+  padding: 0px 0px 35px 0px; }
+  /* line 72, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+  .panel header {
+    background-color: #1C688E;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px; }
+    /* line 76, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel header .search_box {
+      display: block;
+      width: 100%; }
+      /* line 79, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel header .search_box form {
+        padding: 25px;
+        margin-bottom: 18px; }
+      /* line 83, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel header .search_box form input {
+        width: 100%;
+        height: 50px;
+        letter-spacing: 1px;
+        font-size: 14px; }
+  /* line 92, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+  .panel .side-bar {
+    float: left;
+    width: 20%;
+    padding: 5px 20px;
+    border-right: 0.5px solid #cfcfd1;
+    display: inline-block;
+    height: 475px; }
+    /* line 99, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .side-bar .foodTypeList li:hover {
+      background-color: #dbdde0; }
+    /* line 102, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .side-bar .foodTypeList li.disabled a, .panel .side-bar .foodTypeList li.disabled:hover {
+      pointer-events: none;
+      color: #d6d7d8;
+      background-color: #FFF; }
+    /* line 107, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .side-bar ul {
+      list-style-type: none;
+      padding: 0px 3px;
+      margin: 0px; }
+      /* line 111, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .side-bar ul li {
+        font-size: 14px;
+        padding: 4px 9px;
+        border-radius: 7px;
+        margin: 0px; }
+      /* line 117, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .side-bar ul li a {
+        color: black;
+        text-decoration: none; }
+        /* line 120, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+        .panel .side-bar ul li a span {
+          float: right;
+          font-weight: 100; }
+        /* line 124, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+        .panel .side-bar ul li a .yellow-star, .panel .side-bar ul li a .empty-star {
+          width: 15px;
+          margin-right: 2px; }
+      /* line 129, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .side-bar ul .highlighted, .panel .side-bar ul .highlighted:hover {
+        background-color: #2897C5; }
+      /* line 132, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .side-bar ul .highlighted a, .panel .side-bar ul .highlighted a:hover {
+        color: white; }
+    /* line 136, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .side-bar .rating-box {
+      margin-top: 37px; }
+      /* line 138, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .side-bar .rating-box h1 {
+        margin-bottom: 12px; }
+      /* line 141, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .side-bar .rating-box input[type="checkbox"] {
+        float: right; }
+    /* line 146, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .side-bar .stars li a span {
+      float: left; }
+  /* line 151, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+  .panel .results-section {
+    display: inline-block;
+    width: 70%;
+    padding: 8px 0px 0px 50px; }
+    /* line 155, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .results-section h1 {
+      font-size: 16px;
+      font-weight: 400;
+      display: inline-block; }
+    /* line 160, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .results-section .line {
+      display: inline-block;
+      border-bottom: 0.5px solid #cfcfd1;
+      width: 50%;
+      margin-left: 15px; }
+    /* line 166, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .results-section .hit-box {
+      margin-bottom: 22px; }
+      /* line 168, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .results-section .hit-box img {
+        float: left;
+        width: 80px;
+        border: 1px solid grey;
+        border-radius: 4px; }
+      /* line 174, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .results-section .hit-box .hit-body {
+        display: inline-block;
+        margin-left: 16px; }
+        /* line 177, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+        .panel .results-section .hit-box .hit-body h2 {
+          font-size: 17px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          margin: 0px 0px 9px; }
+        /* line 183, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+        .panel .results-section .hit-box .hit-body h3 {
+          font-size: 15px;
+          line-height: 1px;
+          display: inline-block;
+          font-weight: 400;
+          letter-spacing: 1px;
+          margin: 8px 5px; }
+        /* line 191, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+        .panel .results-section .hit-box .hit-body span {
+          font-size: 14px;
+          font-weight: 100;
+          letter-spacing: 1px;
+          margin-top: 3px; }
+        /* line 198, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+        .panel .results-section .hit-box .hit-body .stars-box h3 {
+          color: #FFAB66;
+          float: left; }
+        /* line 202, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+        .panel .results-section .hit-box .hit-body .stars-box .yellow-star, .panel .results-section .hit-box .hit-body .stars-box .empty-star {
+          border: none;
+          width: 15px;
+          margin-right: 3px; }
+        /* line 207, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+        .panel .results-section .hit-box .hit-body .stars-box p {
+          font-weight: 100;
+          letter-spacing: 1px;
+          margin: 0px; }
+      /* line 214, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+      .panel .results-section .hit-box em {
+        background-color: #a2c3f9;
+        font-style: normal; }
+    /* line 219, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .results-section button {
+      width: 260px;
+      height: 38px;
+      font-size: 17px;
+      margin-top: 75px; }
+
+/*# sourceMappingURL=../../scss */
