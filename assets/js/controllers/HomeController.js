@@ -3,8 +3,8 @@ var index = 'restaurants';
 
 angular.module('algolia')
   .controller('HomeController', HomeController);
-HomeController.$inject=['$scope', 'algolia'];
-function HomeController( $scope,   algolia ) {
+HomeController.$inject=['$scope', 'algolia', 'lodash'];
+function HomeController( $scope,   algolia,   _ ) {
   var vm = this;
   var helper = algoliasearchHelper(client, index, {
   facets: ['food_type'],
@@ -59,36 +59,46 @@ function HomeController( $scope,   algolia ) {
     });
   })
 }
-  initialSearch();
 
-  $scope.toggleFacet = function (name) {
-      helper.toggleRefinement('food_type', name).search();
-      helper.on('result', function (content) {
-        console.log("TOOGGLEEE", content);
-        $scope.$apply($scope.facetVal = content.getFacetValues('food_type'));
-      });
-  };
-var starRange = {
-  0 : [1.0],
-  1 : [1.0, 1.1, 1.2, 1.3, 1.4],
-  2 : [1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4],
-  3 : [2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4],
-  4 : [3.5, 3.6, 3.7, 3.8, 3.9, 4.0, 4.1, 4.2, 4.3, 4.4],
-  5 : [4.5, 4.6, 4.7, 4.8, 4.9, 5.0]
-}
+initialSearch();
+
+$scope.toggleFacet = function (name) {
+    helper.toggleRefinement('food_type', name).search();
+    helper.on('result', function (content) {
+      console.log("TOOGGLEEE", content);
+      $scope.$apply($scope.facetVal = content.getFacetValues('food_type'));
+    });
+};
+
+$scope.refinements = [];
 $scope.toggleStars = function (star) {
   console.log(star);
-
-  helper.addNumericRefinement('stars_count', '=', '3.0').search();
+  helper.toggleRefinement('stars_count', star);
+  helper.search();
 
   helper.on('result', function (content) {
-    $scope.$apply($scope.search.hits = content.hits);
-
     console.log("STARRRR", content);
-    debugger;
+
+    $scope.$apply( function(){
+      $scope.refinements = content.getRefinements('stars_count');
+      $scope.search.hits = content.hits;
+    });
   });
+
 }
 
+vm.checkRefinements = function(star){
+  if (_.find($scope.refinements, { name: star} )) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
 //clear search function too.
+
+
 
 }// end of HOME CONTROLLER
