@@ -59,7 +59,7 @@ function HomeController( $scope,   algolia,   _ ) {
         });
       }
       $scope.$apply(function() {
-        $scope.search.hits = $scope.search.hits.concat(content.hits);
+        $scope.search.hits = content.hits;
         $scope.search.numberOfHits = content.nbHits;
         $scope.search.processTime = content.processingTimeMS;
       });
