@@ -58,6 +58,7 @@ function HomeController( $scope,   algolia,   _ ) {
           $scope.foodTypeCounts.Indian = foodFacet["Indian"];
         });
       }
+      
       $scope.$apply(function() {
         $scope.search.hits = content.hits;
         $scope.search.numberOfHits = content.nbHits;
