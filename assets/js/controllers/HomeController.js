@@ -99,7 +99,11 @@ vm.checkRefinements = function(star){
 
 
 //clear search function too.
-
+vm.clearSearch = function() {
+  console.log("CLEAR");
+  helper.clearRefinements();
+  helper.search();
+};
 
 
 }// end of HOME CONTROLLER

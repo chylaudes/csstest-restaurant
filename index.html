@@ -49,6 +49,9 @@
         <ul class="stars" ng-repeat="star in starsRatings">
           <li class="clearfix"> <a ng-click="toggleStars(star)"> <input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"> <star-ratings stars="star"></star-ratings></a></li>
       </div>
+      <button class="clear-button" ng-click="home.clearSearch()">Clear Searches</button>
+
+
      </div>
      <div class="results-section">
        <h1><b>{{search.numberOfHits}} results found</b> in 0.00{{search.processTime}} seconds</h1>

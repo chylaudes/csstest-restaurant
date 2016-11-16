@@ -109,18 +109,39 @@ p, li {
 				color: white;
 			}
     }
+		button {
+			width: 150px;
+			height: 22px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			border-radius: 3px;
+			background-color:#FFF;
+			font-weight: 100;
+			font-size: 13px;
+			border: 0.5px solid rgb(207, 207, 209);
+			margin-top: 40px;
+		}
+		button:hover {
+			background-color: #dbdde0;
+		}
 		.rating-box {
 			margin-top: 37px;
 			h1 {
 				margin-bottom: 12px;
 			}
+			input[type="checkbox"] {
+				float: right;
+			}
 		}
+
 		.stars {
 			li a span {
 					float: left;
 			}
 		}
-  }
+
+  } // end of side-bar
   .results-section {
     display: inline-block;
     width: 70%;
@@ -133,7 +154,7 @@ p, li {
 		.line {
 			display: inline-block;
 			border-bottom: 0.5px solid rgb(207, 207, 209);
-			width: 55%;
+			width: 50%;
     	margin-left: 15px;
 		}
     .hit-box {
