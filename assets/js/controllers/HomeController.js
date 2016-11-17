@@ -3,8 +3,8 @@ var index = 'restaurants';
 
 angular.module('algolia')
   .controller('HomeController', HomeController);
-HomeController.$inject=['$scope', 'algolia', 'lodash'];
-function HomeController( $scope,   algolia,   _ ) {
+HomeController.$inject=['$scope', 'algolia', 'lodash', '$window'];
+function HomeController( $scope,   algolia,    _     ,  $window ) {
   var vm = this;
   var helper = algoliasearchHelper(client, index, {
   facets: ['food_type'],
@@ -127,8 +127,12 @@ function HomeController( $scope,   algolia,   _ ) {
 
   //clear search function too.
   vm.clearSearch = function() {
+    $scope.query = '';
     helper.clearRefinements();
     helper.search();
+    console.log("HELLLO");
+    var element = $window.document.getElementById("searchInput");
+    element.focus();
   };
 
   //show more on the list

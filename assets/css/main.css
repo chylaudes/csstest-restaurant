@@ -248,12 +248,13 @@ input:focus::-webkit-input-placeholder {
   .panel .no-results {
     display: inline-block;
     width: 70%;
-    padding: 8px 0px 0px 50px; }
-    /* line 246, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    padding: 8px 0px 0px 50px;
+    text-align: center; }
+    /* line 247, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
     .panel .no-results h2 {
       font-weight: 100;
       font-size: 33px; }
-    /* line 250, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    /* line 251, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
     .panel .no-results button {
       padding: 10px 10px;
       font-size: 18px;
