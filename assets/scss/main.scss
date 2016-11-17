@@ -143,6 +143,10 @@ input:focus::-webkit-input-placeholder { color: transparent; }
 			input[type="checkbox"] {
 				float: right;
 			}
+			li .star-count {
+				font-weight: 100;
+				margin-left: 3px;
+			}
 		}
 		.stars {
 			li a span {

@@ -47,7 +47,7 @@
         <div class="rating-box">
           <h1>Rating</h1>
           <ul class="stars" ng-repeat="(star, count) in starsRatings">
-            <li class="clearfix"> <a ng-click="toggleStars(star)"><input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"><star-ratings stars="star"></star-ratings> ({{count}})</a></li>
+            <li class="clearfix"> <a ng-click="toggleStars(star)"><input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"><star-ratings stars="star"></star-ratings><span class="star-count">({{count}})</span></a></li>
           </ul>
         </div>
         <button class="clear-button" ng-click="home.clearSearch()">Clear Searches</button>
