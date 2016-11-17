@@ -50,10 +50,9 @@
             <li class="clearfix"> <a ng-click="toggleStars(star)"><input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"><star-ratings stars="star"></star-ratings><span class="star-count">({{count}})</span></a></li>
           </ul>
         </div>
-        <button class="clear-button" ng-click="home.clearSearch()">Clear Searches</button>
+        <button class="clear-button" ng-click="home.clearSearch()">Clear Search</button>
        </div>
-
-       <div class="results-section">
+       <div class="results-section clearfix" ng-hide"search.numberOfHits === 0">
          <h1><b>{{search.numberOfHits}} results found</b> in 0.00{{search.processTime}} seconds</h1>
          <div class="line"></div>
          <div class="hit" ng-repeat="hit in search.hits">
@@ -63,9 +62,12 @@
            <button class="prev" ng-click="home.prevList()">Previous</button>
            <button class="next" ng-click="home.nextList()" ng-class="{'disabled' : currentPage + 1 === lastPage || search.hits.length === 0}">Next Page</button>
          </div>
-
-         <button ng-show="currentPage === 0" ng-click="home.nextList()" ng-class="{'disabled' : currentPage + 1 === lastPage || search.hits.length === 0}">Show More</button>
+         <button ng-show="currentPage === 0" ng-hide="search.numberOfHits === 0" ng-click="home.nextList()" ng-class="{'disabled' : currentPage + 1 === lastPage || search.hits.length === 0}">Show More</button>
        </div>
+        <div class="no-results" ng-show="search.numberOfHits === 0">
+          <h2>We didn't find any results for the search <em>"{{query}}"</em></h2>
+          <button class="clear-button" ng-click="home.clearSearch()">Clear Search</button>
+        </div>
      </section>
     </div> <!-- end of container -->
 
