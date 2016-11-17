@@ -33,7 +33,13 @@ function HomeController( $scope,   algolia,   _ ) {
     "Indian" : 0
   };
   //Recording all the star ratings
-  $scope.starsRatings = ["1.0", "2.0", "3.0", "4.0", "4.9"];
+  $scope.starsRatings = {
+    "1.0" : 0,
+    "2.0" : 0,
+    "3.0" : 0,
+    "4.0" : 0,
+    "4.9" : 0
+  };
 
   $scope.facetVal = [];
   $scope.query = '';
@@ -41,24 +47,28 @@ function HomeController( $scope,   algolia,   _ ) {
   $scope.searchQuery = function () {
     helper.setQuery($scope.query).search();
   };
-
+  var applyCounts = function(obj, hitObj) {
+    for (var i in obj) {
+      if (!hitObj[i]) {
+        obj[i] = 0;
+      } else {
+        obj[i] = hitObj[i];
+      }
+    }
+  };
   //first search on the dom load
   var initialSearch = function () {
     helper.search();
     helper.on('result', function(content) {
       if (content.facets[0]) {
         var foodFacet = content.facets[0].data;
+        var starFacet = content.disjunctiveFacets[0].data;
         $scope.$apply(function(){
-          $scope.foodTypeCounts.American = foodFacet["American"];
-          $scope.foodTypeCounts.Italian = foodFacet["Italian"];
-          $scope.foodTypeCounts.Californian = foodFacet["Californian"];
-          $scope.foodTypeCounts.French = foodFacet["French"];
-          $scope.foodTypeCounts.Seafood = foodFacet["Seafood"];
-          $scope.foodTypeCounts.Japanese = foodFacet["Japanese"];
-          $scope.foodTypeCounts.Indian = foodFacet["Indian"];
+          applyCounts($scope.starsRatings, starFacet);
+          applyCounts($scope.foodTypeCounts, foodFacet);
         });
       }
-      
+
       $scope.$apply(function() {
         $scope.search.hits = content.hits;
         $scope.search.numberOfHits = content.nbHits;
@@ -72,12 +82,12 @@ function HomeController( $scope,   algolia,   _ ) {
   //toggling between food_type facets
   $scope.toggleFacet = function (name) {
       helper.toggleRefinement('food_type', name).search();
+      $scope.facetVal = helper.getRefinements('food_type');
       helper.on('result', function (content) {
         $scope.$apply(function() {
           $scope.lastPage = content.nbPages;
           $scope.currentPage = content.page;
           $scope.search.hits = content.hits;
-          $scope.facetVal = content.getFacetValues('food_type');
         });
       });
   };
@@ -86,6 +96,8 @@ function HomeController( $scope,   algolia,   _ ) {
   $scope.toggleStars = function (star) {
     helper.toggleRefinement('stars_count', star);
     helper.search();
+    $scope.facetVal = helper.getRefinements('food_type');
+
     helper.on('result', function (content) {
       $scope.$apply(function () {
         $scope.refinements = content.getRefinements('stars_count');

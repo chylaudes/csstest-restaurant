@@ -39,15 +39,15 @@
        <div class="side-bar">
         <h1>Cuisine / Food-Type</h1>
         <ul class="foodTypeList">
-          <li  ng-click="toggleFacet(food_type)" ng-repeat="(food_type, count) in foodTypeCounts" ng-class="{ 'highlighted' : facetVal[0].name === food_type && facetVal.length === 1, 'disabled' : facetVal[0].name !== food_type && facetVal.length === 1 }">
+          <li  ng-click="toggleFacet(food_type)" ng-repeat="(food_type, count) in foodTypeCounts" ng-class="{ 'highlighted' : facetVal[0].value === food_type && facetVal.length === 1, 'disabled' : facetVal[0].value !== food_type && facetVal.length === 1 }">
             <a href="#">{{food_type}} <span>{{count}}</span>
             </a>
           </li>
         </ul>
         <div class="rating-box">
           <h1>Rating</h1>
-          <ul class="stars" ng-repeat="star in starsRatings">
-            <li class="clearfix"> <a ng-click="toggleStars(star)"><input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"><star-ratings stars="star"></star-ratings></a></li>
+          <ul class="stars" ng-repeat="(star, count) in starsRatings">
+            <li class="clearfix"> <a ng-click="toggleStars(star)"><input type="checkbox" value="star" ng-checked="home.checkRefinements(star)"><star-ratings stars="star"></star-ratings> ({{count}})</a></li>
           </ul>
         </div>
         <button class="clear-button" ng-click="home.clearSearch()">Clear Searches</button>
