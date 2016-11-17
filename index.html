@@ -59,7 +59,12 @@
          <div class="hit" ng-repeat="hit in search.hits">
             <result-card hit="hit"></result-card>
          </div>
-         <button ng-click="home.toggleList()" ng-class="{'disabled' : currentPage + 1 === lastPage || search.hits.length === 0}">Show More</button>
+         <div class="pagination" ng-hide="currentPage === 0">
+           <button class="prev" ng-click="home.prevList()">Previous</button>
+           <button class="next" ng-click="home.nextList()" ng-class="{'disabled' : currentPage + 1 === lastPage || search.hits.length === 0}">Next Page</button>
+         </div>
+
+         <button ng-show="currentPage === 0" ng-click="home.nextList()" ng-class="{'disabled' : currentPage + 1 === lastPage || search.hits.length === 0}">Show More</button>
        </div>
      </section>
     </div> <!-- end of container -->

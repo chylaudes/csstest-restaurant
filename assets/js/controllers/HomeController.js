@@ -73,6 +73,10 @@ function HomeController( $scope,   algolia,   _ ) {
         $scope.search.hits = content.hits;
         $scope.search.numberOfHits = content.nbHits;
         $scope.search.processTime = content.processingTimeMS;
+        $scope.lastPage = content.nbPages;
+        $scope.currentPage = content.page;
+        console.log("current page", $scope.currentPage);
+
       });
     });
   };
@@ -88,6 +92,8 @@ function HomeController( $scope,   algolia,   _ ) {
           $scope.lastPage = content.nbPages;
           $scope.currentPage = content.page;
           $scope.search.hits = content.hits;
+          console.log("current page", $scope.currentPage);
+
         });
       });
   };
@@ -104,6 +110,7 @@ function HomeController( $scope,   algolia,   _ ) {
         $scope.search.hits = content.hits;
         $scope.lastPage = content.nbPages;
         $scope.currentPage = content.page;
+        console.log("current page", $scope.currentPage);
       });
     });
   };
@@ -125,8 +132,11 @@ function HomeController( $scope,   algolia,   _ ) {
   };
 
   //show more on the list
-  vm.toggleList = function(){
+  vm.nextList = function(){
     helper.nextPage().search();
+  };
+  vm.prevList = function(){
+    helper.previousPage().search();
   };
 
 }// end of HOME CONTROLLER

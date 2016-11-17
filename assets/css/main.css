@@ -233,6 +233,15 @@ input:focus::-webkit-input-placeholder {
       width: 260px;
       height: 38px;
       font-size: 17px;
-      margin-top: 75px; }
+      margin-top: 40px; }
+    /* line 231, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .results-section .prev {
+      position: absolute;
+      bottom: 80px; }
+    /* line 235, /Users/Christine/Desktop/csstest-restaurant-locator-master-with-js-test/assets/scss/main.scss */
+    .panel .results-section .next {
+      position: absolute;
+      bottom: 80px;
+      right: 120px; }
 
 /*# sourceMappingURL=../../scss */

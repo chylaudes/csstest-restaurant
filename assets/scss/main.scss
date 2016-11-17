@@ -226,7 +226,16 @@ input:focus::-webkit-input-placeholder { color: transparent; }
 			width: 260px;
 			height: 38px;
 			font-size: 17px;
-			margin-top: 75px;
+			margin-top: 40px;
+		}
+		.prev {
+			position: absolute;
+			bottom: 80px;
+		}
+		.next {
+			position: absolute;
+			bottom: 80px;
+		  right: 120px;
 		}
   } // end of results-section
 }// end of .panel
