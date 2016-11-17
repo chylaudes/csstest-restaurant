@@ -38,8 +38,11 @@
 
        <div class="side-bar">
         <h1>Cuisine / Food-Type</h1>
-        <ul class="foodTypeList" ng-repeat="(food_type, count) in foodTypeCounts">
-          <li ng-class="{ 'highlighted' : facetVal[0].name === food_type && facetVal.length === 1, 'disabled' : facetVal[0].name !== food_type && facetVal.length === 1 }"><a href="#" ng-click="toggleFacet(food_type)">{{food_type}} <span>{{count}}</span></a></li>
+        <ul class="foodTypeList">
+          <li  ng-click="toggleFacet(food_type)" ng-repeat="(food_type, count) in foodTypeCounts" ng-class="{ 'highlighted' : facetVal[0].name === food_type && facetVal.length === 1, 'disabled' : facetVal[0].name !== food_type && facetVal.length === 1 }">
+            <a href="#">{{food_type}} <span>{{count}}</span>
+            </a>
+          </li>
         </ul>
         <div class="rating-box">
           <h1>Rating</h1>
