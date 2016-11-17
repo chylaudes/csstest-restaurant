@@ -70,13 +70,12 @@ function HomeController( $scope,   algolia,    _     ,  $window ) {
       }
 
       $scope.$apply(function() {
+        console.log(content);
         $scope.search.hits = content.hits;
         $scope.search.numberOfHits = content.nbHits;
         $scope.search.processTime = content.processingTimeMS;
         $scope.lastPage = content.nbPages;
         $scope.currentPage = content.page;
-        console.log("current page", $scope.currentPage);
-
       });
     });
   };
@@ -127,12 +126,7 @@ function HomeController( $scope,   algolia,    _     ,  $window ) {
 
   //clear search function too.
   vm.clearSearch = function() {
-    $scope.query = '';
-    helper.clearRefinements();
-    helper.search();
-    console.log("HELLLO");
-    var element = $window.document.getElementById("searchInput");
-    element.focus();
+    $window.location.reload();
   };
 
   //show more on the list
@@ -142,5 +136,7 @@ function HomeController( $scope,   algolia,    _     ,  $window ) {
   vm.prevList = function(){
     helper.previousPage().search();
   };
+  var element = $window.document.getElementById("searchInput");
+  element.focus();
 
 }// end of HOME CONTROLLER
