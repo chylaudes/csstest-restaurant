@@ -11,9 +11,18 @@ def csv_to_hash
   csv_hash = {}
   hello = CSV.read(file_path, {:col_sep => ';'})
   hello.each_with_index do |line, index|
-     if index === 0
+     if index == 0
        array = line
      else
+       details_obj = {}
+       array.each_with_index do |header, i|
+         if i != 5
+           details_obj[header] = line[i]
+         else
+           next
+         end
+       end
+
        details_obj = { array[1] => line[1], array[2] => line[2], array[3] => line[3], array[4] => line[4], array[6] => line[6], array[7] => line[7]}
        csv_hash[line[0].to_i] = details_obj
      end
